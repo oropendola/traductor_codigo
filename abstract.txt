@@ -1,0 +1,57 @@
+
+  Se trata de tomar codigo fuente con nombres de procedimientos,
+  variables, etc en espaniol y traducirlo a ingles.
+
+  De esa manera el SW se vuelve mas internacional y es mas facil
+  compartirlo (mostrar en sl)
+
+  Para ello se usara ruby.
+
+  Habra una base de datos de traduccion
+
+  palabra_espaniol = palabra_ingles.
+
+  Tambien se podra hacer la conversion inversa
+
+  Tambien, por cada lenguaje, habra una base de datos de palabras
+  clave del lenguaje para no traducirlas.
+  Esto es util sobre todo para la conversion ingles -> espaniol
+
+  Tambien la opcion de conectarse por red haciendo scrapping y tomar un
+  traduccion de una pagina web.
+
+  Las palabras cuya traduccion no se encuentre se mostrara en una 
+  ventana editable y se puede aniadir su significado que se guardara
+  en la base de datos.
+
+  Usar como GUI para ruby   Shoes
+
+
+  El programa debe reconocer nombres del tipo
+
+  ControladorTarjeta
+
+  o 
+
+  controlador_tarjeta_video 
+
+  Y saber dividir los distintos nombres, traducirlos y volver a unirlos
+  siguiendo el mismo estilo.
+
+  Para ello debe saber reconocer CamelCase y snake_case
+
+  Se puede hacer un reconocimiento de extension del fichero para
+  detectar el lenguaje del fichero origen.
+
+  Estructura de directorios y ficheros
+
+     db
+     config
+     src => view, model, controller
+     test
+     doc
+     README.md
+
+  Probar con los ficheros Rakefile (como un makefile)
+  para construir el projecto
+
