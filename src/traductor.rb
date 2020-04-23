@@ -9,7 +9,7 @@ require_relative 'argumentoserroneos.rb'
 
 class Aplicacion
 
-  def self.ayuda 
+  def self.ayuda
 
      return <<-EOF
 
@@ -21,25 +21,15 @@ class Aplicacion
 
   def self.valida_argumentos
 
-    if (0..1).cover? ARGV.length
+    raise ArgumentosErroneos.new("Numero incorrecto de argumentos") if ARGV.length > 1
 
-      if ARGV.length == 1
+    if ARGV.length == 1
 
-        if ARGV[0] != "-h" && ARGV[0] != "--help"
+      raise ArgumentosErroneos.new("Argumento desconocido #{ARGV[0]}") if ARGV[0] != "-h" && ARGV[0] != "--help"
 
-          raise ArgumentosErroneos.new("Argumento desconocido #{ARGV[0]}")
+      puts self.ayuda
 
-        end
-
-          puts self.ayuda
-
-      end
-
-    else
-
-      raise ArgumentosErroneos.new("Numero incorrecto de argumentos")
-
-    end
+   end
 
   end
 
