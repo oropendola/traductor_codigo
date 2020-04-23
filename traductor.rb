@@ -46,6 +46,10 @@ class Aplicacion
 end
 
 
+#=================================================
+# MAIN PROGRAM
+#=================================================
+
 begin
 
   Aplicacion.valida_argumentos()

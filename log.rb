@@ -35,17 +35,19 @@ class Log
 
   end
 
-  def info(mensaje)    trazar(INFO, "INFO    : " << mensaje) end
-  def warn(mensaje)    trazar(INFO, "ALERTA  : " << mensaje) end
-  def error(mensaje)   trazar(INFO, "ERROR   : " << mensaje) end
-  def critico(mensaje) trazar(INFO, "CRITICO : " << mensaje) end
-
   def cerrar
 
     @log.close if @abierto
     @log = nil
 
   end
+
+
+  def info(mensaje)    trazar(INFO,    "INFO    : " << mensaje) end
+  def warn(mensaje)    trazar(ALERTA,  "ALERTA  : " << mensaje) end
+  def error(mensaje)   trazar(ERROR,   "ERROR   : " << mensaje) end
+  def critico(mensaje) trazar(CRITICO, "CRITICO : " << mensaje) end
+
 
 private
 
