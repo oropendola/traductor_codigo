@@ -5,7 +5,7 @@
 # Test Manejador de trazas
 #
 
-require_relative "log.rb"
+require_relative "../src/log.rb"
 
 log = Log.new("test",Log::INFO)
 

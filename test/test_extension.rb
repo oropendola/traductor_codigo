@@ -5,7 +5,7 @@
 # Test del paquete extension
 #
 
-require_relative 'analizadorextension'
+require_relative '../src/analizadorextension'
 
 fichero = "hola.rb"
 

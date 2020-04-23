@@ -7,7 +7,7 @@
 
 class Lenguaje
 
-  attr_reader :tipo, :nombre
+  attr_reader :tipo, :nombre :palabras_reservadas
 
 end
 
