@@ -1,4 +1,4 @@
-#!/cygdrive/c/Ruby24-x64/bin/ruby
+#!/cygdrive/c/Ruby24-x64/bin/ruby -w
 #
 # @ Javier Felipe Toribio 2018
 #
@@ -19,3 +19,4 @@ class ArgumentosErroneos < StandardError
 
 end
 
+# vim: tw=79:ts=2:

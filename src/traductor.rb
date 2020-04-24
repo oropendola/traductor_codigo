@@ -1,4 +1,4 @@
-#!/cygdrive/c/Ruby24-x64/bin/ruby
+#!/cygdrive/c/Ruby24-x64/bin/ruby -w
 #
 # @ Javier Felipe Toribio 2018
 #
@@ -29,27 +29,25 @@ class Aplicacion
 
       puts self.ayuda
 
-   end
+    end
 
   end
 
 end
 
 
-#=================================================
+#=============================================================================
 # MAIN PROGRAM
-#=================================================
+#=============================================================================
 
 begin
 
   Aplicacion.valida_argumentos()
 
-rescue ArgumentosErroneos => e
+rescue ArgumentosErroneos => error
 
-   puts e
+   puts error
 
 end
 
-
-
-
+# vim: tw=79:ts=2:

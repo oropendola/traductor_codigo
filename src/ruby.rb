@@ -1,4 +1,4 @@
-#!/cygdrive/c/Ruby24-x64/bin/ruby
+#!/cygdrive/c/Ruby24-x64/bin/ruby -w
 #
 # @ Javier Felipe Toribio 2020-04-21
 #
@@ -59,3 +59,4 @@ class Ruby < Lenguaje
 
 end
 
+# vim: tw=79:ts=2:

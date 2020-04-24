@@ -1,4 +1,4 @@
-#!/cygdrive/c/Ruby24-x64/bin/ruby
+#!/cygdrive/c/Ruby24-x64/bin/ruby -w
 #
 # @ Javier Felipe Toribio 2020-04-21
 #
@@ -10,24 +10,26 @@ require_relative 'ruby'
 
 class AnalizadorExtension
 
-   def self.lenguaje(nombre_fichero)
+  def self.lenguaje(nombre_fichero)
 
-      nombre, extension = nombre_fichero.split(".")
+    _, extension = nombre_fichero.split(".")
 
-      begin
+    begin
 
-        PATRONES[extension]
+      PATRONES[extension]
 
-      rescue
+    rescue
 
-         abort("Extension '#{extension}' no encontrada")
+      abort("Extension '#{extension}' no encontrada")
 
-      end
+    end
 
-   end
+  end
 
-   private
+private
 
-     PATRONES = { 'rb' => Ruby.new }
+  PATRONES = { 'rb' => Ruby.new }
 
 end
+
+# vim: tw=79:ts=2:

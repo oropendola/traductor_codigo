@@ -1,4 +1,4 @@
-#!/cygdrive/c/Ruby24-x64/bin/ruby
+#!/cygdrive/c/Ruby24-x64/bin/ruby -w
 #
 # @ Javier Felipe Toribio 2020-04-22
 #
@@ -61,6 +61,8 @@ private
 
   end
 
+  # Prefijo para el nombre del fichero de log
+
   def prefijo_tiempo_fichero
 
      formato = "%Y-%m-%d_%H_%M_%S"
@@ -69,7 +71,7 @@ private
 
   end
 
-  # Fecha, hora con milisegundos
+  # Prefijo fecha, hora con milisegundos para el mensaje de log
 
   def prefijo_tiempo_mensaje
 
@@ -80,3 +82,5 @@ private
   end
 
 end
+
+# vim: tw=79:ts=2:
