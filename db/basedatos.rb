@@ -6,7 +6,7 @@
 #
 #
 
-class BaseDatos 
+class BaseDatos
 
    def initialize(fichero)
       @fichero = fichero

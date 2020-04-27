@@ -12,9 +12,7 @@ class ArgumentosErroneos < StandardError
   end
 
   def to_s
-
-     "Argumentos de entrada incorrectos : #{@msg}"
-
+   "Argumentos de entrada incorrectos : #{@msg}"
   end
 
 end

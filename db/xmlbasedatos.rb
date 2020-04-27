@@ -55,7 +55,7 @@ private
 
     rescue StandardError => e
 
-       puts "Error al intentar leer #{@fichero}"
+       puts "Error al intentar cargar datos de #{@fichero}"
        puts e.message
        puts e.backtrace.inspect
 
