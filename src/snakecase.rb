@@ -5,6 +5,7 @@
 #
 
 require_relative "particion"
+require_relative "camelcase"
 
 class SnakeCase < Particion
 
@@ -18,6 +19,14 @@ class SnakeCase < Particion
   def to_s
 
     @palabras.join("_")
+
+  end
+
+  def to_camel_case
+
+    nuevo = @palabras.map { |str| str.capitalize }.join("")
+
+    return CamelCase.new(nuevo)
 
   end
 
