@@ -22,9 +22,10 @@ class XMLBaseDatos < BaseDatos
    end
 
    def buscar(palabra)
+
      raise StandardError.new("Database no cargada") if @datos.nil?
 
-     return "No se ha encontrado traduccion para '#{palabra}'" if ! @datos.include? palabra
+     return nil if ! @datos.include? palabra
 
      @datos[palabra]
 

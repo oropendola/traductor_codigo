@@ -8,7 +8,7 @@
 
 require_relative '../db/xmlbasedatos'
 
-bd = XMLBaseDatos.new('../db/ingles_espanol.html')
+bd = XMLBaseDatos.new('../db/espanol_ingles.html')
 
 palabras = ['ayuda','noexiste']
 
