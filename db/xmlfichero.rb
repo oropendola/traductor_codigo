@@ -15,7 +15,7 @@ class XMLFichero < LenguajeMarcado
 
   EXTENSION = ".html"
 
-  UNDEFINED = "@NOT_DEFINED@"
+  INDEFINIDO = "@NOT_DEFINED@"
 
   def initialize(nombre_fichero)
 
@@ -48,7 +48,7 @@ class XMLFichero < LenguajeMarcado
 
   def self.undefined
 
-    UNDEFINED
+    INDEFINIDO
 
   end
 
@@ -78,7 +78,7 @@ private
 
       divs << LenguajeMarcado.crear(
         etiqueta: "div",
-        contenido: palabra + "= " + UNDEFINED,
+        contenido: palabra + "=" + INDEFINIDO,
         atributo: {:llave => "class", :valor => "trad"}
       )
 
