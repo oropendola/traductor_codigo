@@ -15,7 +15,7 @@ class Fichero
 
   def leer
 
-    raise LoadError, "Fichero '#{@nombre_fichero}' no encontrado" if ! File.exist? @nombre_fichero
+    raise IOError, "Fichero '#{@nombre_fichero}' no encontrado" if ! File.exist? @nombre_fichero
 
     texto = nil
 
