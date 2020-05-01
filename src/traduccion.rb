@@ -5,15 +5,19 @@
 # Traduccion de un fichero de un idioma a otro
 #
 
-require_relative "../db/xmlbasedatos"
 
 require_relative "analizadorextension"
 
-require_relative "fichero"
 
 require_relative "tipopalabra"
 
 require_relative "estilo"
+
+require_relative "../lib/fichero"
+
+require_relative "../db/xmlfichero"
+
+require_relative "../db/xmlbasedatos"
 
 class Traduccion
 
@@ -55,15 +59,26 @@ class Traduccion
 
     nuevo_fichero.grabar(@resultado[:texto])
 
+    nombre_fichero_indefinidas = nombre_fichero_database("indefinidas")
+
+    fichero_indefinidas = XMLFichero.new(nombre_fichero_indefinidas)
+
+    fichero_indefinidas.grabar(@resultado[:sin_traducir])
+
   end
 
 private
 
-  RUTA_DATABASE = "../db/"
+  def nombre_fichero_database(nombre)
+
+    XMLFichero.ruta + nombre + XMLFichero.extension
+
+  end
 
   def leer_base_datos(origen, destino)
 
-    nombre_base_datos = RUTA_DATABASE + origen + "_" + destino + ".html"
+    nombre_base_datos = nombre_fichero_database(origen + "_" + destino)
+
     @base_datos = XMLBaseDatos.new(nombre_base_datos)
 
   end
@@ -112,7 +127,7 @@ private
 
       @resultado[:texto].gsub!(palabra, nueva_palabra)
 
-    else
+    elsif ! palabra.empty?
 
       @resultado[:sin_traducir] << palabra
 

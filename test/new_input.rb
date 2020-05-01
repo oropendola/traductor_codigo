@@ -25,4 +25,5 @@ else
 
 end
 
-data_result_right=1
+data_result_right = 1
+

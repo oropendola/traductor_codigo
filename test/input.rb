@@ -25,4 +25,5 @@ else
 
 end
 
-dato_resultado_correcto=1
+dato_resultado_correcto = 1
+
