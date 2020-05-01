@@ -5,6 +5,12 @@
 # texto ruby para ser traducido al ingles
 #
 
+class ResultadoCorrecto
+end
+
+class ArgumentoErroneo
+end
+
 dato = gets.chomp
 
 resultado = dato.to_i rescue nil
@@ -18,3 +24,5 @@ else
   puts "argumento erroneo"
 
 end
+
+dato_resultado_correcto=1

@@ -2,8 +2,14 @@
 #
 # @ Javier Felipe Toribio 2020-04-29
 #
-# text ruby to ser traduced to english
+# text ruby to be traduced to english
 #
+
+class ResultRight
+end
+
+class ArgumentWrong
+end
 
 data = gets.chomp
 
@@ -11,10 +17,12 @@ result = data.to_i rescue nil
 
 if result
 
-  puts "result correcto"
+  puts "result right"
 
 else
 
-  puts "argument erroneo"
+  puts "argument wrong"
 
 end
+
+data_result_right=1

@@ -9,30 +9,27 @@ require_relative "../db/xmlbasedatos"
 
 require_relative "analizadorextension"
 
+require_relative "fichero"
+
+require_relative "tipopalabra"
+
+require_relative "estilo"
+
 class Traduccion
 
-  RUTA_DATABASE = "../db/"
+  attr_reader :resultado
 
   def initialize(origen,destino,nombre_fichero)
 
-    @nombre_base_datos = RUTA_DATABASE + origen + "_" + destino + ".html"
     @nombre_fichero = nombre_fichero
 
     @base_datos = nil
 
     @texto = nil
 
-    @nuevo_texto = nil
+    @resultado = nil
 
-    @no_encontradas = []
-
-    @lenguaje = AnalizadorExtension.lenguaje(nombre_fichero)
-
-    raise LoadError, "Fichero de base de datos '#{@nombre_base_datos}' no encontrado" if ! File.exist? @nombre_base_datos
-
-    raise LoadError, "Fichero para traducir '#{nombre_fichero}' no encontrado" if ! File.exist? nombre_fichero
-
-    leer_base_datos
+    leer_base_datos(origen, destino)
 
     leer_fichero
 
@@ -40,79 +37,84 @@ class Traduccion
 
   def convertir
 
-    @nuevo_texto = @texto
+    @resultado = { :texto => @texto, :sin_traducir => [] }
 
-    palabras_fichero = Set.new(@texto.strip.gsub(/\s+["'.=]/," ").split)
-
-    reservadas = Set.new(@lenguaje.palabras_reservadas)
-
-    palabras = palabras_fichero - reservadas
+    palabras = extraer_palabras
 
     palabras.each do |palabra|
 
-      traduccion = @base_datos.buscar(palabra)
-
-      if traduccion
-
-        @nuevo_texto.gsub!(palabra,traduccion)
-
-      else
-
-        @no_encontradas << palabra
-
-      end
+      traducir(palabra)
 
     end
-
-  end
-
-  def resultado
-
-    { :nuevo_texto => @nuevo_texto, :no_encontradas => @no_encontradas }
 
   end
 
   def grabar
 
-    nuevo_nombre_fichero = "new_" + @nombre_fichero
+    nuevo_fichero = Fichero.new("new_" + @nombre_fichero)
 
-    fichero = File.open(nuevo_nombre_fichero, "w")
-
-    fichero.write(@nuevo_texto)
-
-    fichero.close
+    nuevo_fichero.grabar(@resultado[:texto])
 
   end
 
 private
 
-  def leer_base_datos
+  RUTA_DATABASE = "../db/"
 
-    begin
+  def leer_base_datos(origen, destino)
 
-      @base_datos = XMLBaseDatos.new(@nombre_base_datos)
-
-    rescue Exception => e
-
-      raise LoadError, "Error al cargar fichero de base de datos '#{@nombre_base_datos}'"
-
-    end
+    nombre_base_datos = RUTA_DATABASE + origen + "_" + destino + ".html"
+    @base_datos = XMLBaseDatos.new(nombre_base_datos)
 
   end
 
   def leer_fichero
 
-    begin
+    fichero = Fichero.new(@nombre_fichero)
 
-      fichero = File.open(@nombre_fichero,"r")
+    @texto = fichero.leer
 
-      @texto = fichero.read
+  end
 
-      fichero.close
+  def extraer_palabras
 
-    rescue Exception => e
+    lenguaje = AnalizadorExtension.lenguaje(@nombre_fichero)
 
-      raise LoadError, "Error al cargar fichero '#{@nombre_fichero}'"
+    filtrado = @texto.gsub(/[^a-zA-Z_]/," ").strip.split
+
+    palabras_fichero = Set.new(filtrado)
+
+    reservadas = Set.new(lenguaje.palabras_reservadas)
+
+    palabras = palabras_fichero - reservadas
+
+    extraidas = []
+
+    palabras.each do |palabra|
+
+      extraidas += Estilo.extraer(palabra).palabras
+
+    end
+
+    extraidas
+
+  end
+
+  def traducir(palabra)
+
+    tipo_palabra = TipoPalabra.extraer(palabra)
+
+    traduccion = @base_datos.buscar(palabra.downcase)
+
+    if traduccion
+
+      nueva_palabra = tipo_palabra.estilizar(traduccion)
+
+      @resultado[:texto].gsub!(palabra, nueva_palabra)
+
+    else
+
+      @resultado[:sin_traducir] << palabra
 
     end
 
