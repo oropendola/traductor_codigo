@@ -8,7 +8,6 @@
 
 require_relative "analizadorextension"
 
-
 require_relative "tipopalabra"
 
 require_relative "estilo"
