@@ -55,3 +55,10 @@
   Probar con los ficheros Rakefile (como un makefile)
   para construir el projecto
 
+
+  TODO
+
+  Para las palabras sin traducir, usar API de 
+  wordreference (u otro diccionario web) para generar el
+  xml de traduccion automaticament ??
+
