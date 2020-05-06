@@ -116,11 +116,11 @@ private
 
   def traducir(palabra)
 
-    tipo_palabra = TipoPalabra.extraer(palabra)
-
     traduccion = @base_datos.buscar(palabra.downcase)
 
     if traduccion
+
+      tipo_palabra = TipoPalabra.extraer(palabra)
 
       nueva_palabra = tipo_palabra.estilizar(traduccion)
 

@@ -16,7 +16,7 @@ class Log
 
     @nivel = nivel || INFO
 
-    nombre_fichero = fichero || "traductor"
+    nombre_fichero = fichero || $PROGRAM_NAME
 
     nombre_fichero = "#{prefijo_tiempo_fichero}_#{nombre_fichero}.log"
 
