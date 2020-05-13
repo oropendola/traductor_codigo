@@ -29,7 +29,11 @@ private
 
      return <<-EOF
 
-       Uso #{$PROGRAM_NAME} [ -h | --help ]
+       Uso:
+
+           #{$PROGRAM_NAME} [ -h | --help ]
+
+           #{$PROGRAM_NAME} file1 file2 .. fileN
 
      EOF
 

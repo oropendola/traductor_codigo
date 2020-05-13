@@ -28,3 +28,5 @@ traduccion.grabar
 
 puts traduccion.resultado
 
+puts traduccion.estadistica
+

@@ -27,7 +27,7 @@ class Fichero
 
       fichero.close
 
-    rescue StandardError => e
+    rescue StandardError
 
       raise IOError, "Error al cargar fichero '#{@nombre_fichero}'"
 
@@ -47,7 +47,7 @@ class Fichero
 
       fichero.close
 
-    rescue StandardError => e
+    rescue StandardError
 
       raise IOError, "Error al cargar fichero '#{@nombre_fichero}'"
 

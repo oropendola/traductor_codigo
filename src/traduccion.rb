@@ -12,6 +12,8 @@ require_relative "tipopalabra"
 
 require_relative "estilo"
 
+require_relative "porcentaje"
+
 require_relative "../lib/fichero"
 
 require_relative "../db/xmlfichero"
@@ -31,6 +33,8 @@ class Traduccion
     @texto = nil
 
     @resultado = nil
+
+    @estadistica = Porcentaje.new
 
     leer_base_datos(origen, destino)
 
@@ -63,6 +67,12 @@ class Traduccion
     fichero_indefinidas = XMLFichero.new(nombre_fichero_indefinidas)
 
     fichero_indefinidas.grabar(@resultado[:sin_traducir])
+
+  end
+
+  def estadistica
+
+     "Estadistica :\n#{@estadistica}"
 
   end
 
@@ -126,9 +136,13 @@ private
 
       @resultado[:texto].gsub!(palabra, nueva_palabra)
 
+      @estadistica.incluir("Encontradas")
+
     elsif ! palabra.empty?
 
       @resultado[:sin_traducir] << palabra
+
+      @estadistica.incluir("Sin traducir")
 
     end
 
