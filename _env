@@ -1,0 +1,7 @@
+
+BASE="/k/repositorio/programacion/proyectos/traductor_codigo"
+
+alias db="cd ${BASE}/db"
+alias src="cd ${BASE}/src"
+alias tst="cd ${BASE}/test"
+alias lib="cd ${BASE}/lib"
